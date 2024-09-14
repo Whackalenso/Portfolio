@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+html {
+  --primary-color: #6000C1;
+  --accent-color: #BB0000;
+  font-family: "Major Mono Display";
+}
+
+body {
+  margin: 0;
+}
+
+.center {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  justify-content: center;
+  gap: 50px;
+  width: 50vw;
+}
+
+.portrait {
+  width: 350px;
+  height: 60vh;
+  background-color: var(--primary-color);
+}
+
+h1 {
+  font-size: 6rem;
+  width: 50%;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 15px;
+  font-size: 1.5rem;
+}
+
+@keyframes highlight {
+  from {
+    background-position: 0;
+  }
+
+  to {
+    background-position: -100%;
+  }
+}
+
+.text {
+  /* animation-name: highlight;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
+  background-size: 0.5rem;
+  background-color: white; */
+
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+}
+
+.home {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #FFD25D;
+  color: var(--primary-color);
+  transition: top 0.5s ease-in-out;
+}
+
+.nav-button {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  color: var(--accent-color);
+  font-family: "Open Sans";
+  font-size: 1.5rem;
+  font-style: medium;
+
+  cursor: pointer;
+}
+
+.nav-button.nav-top {
+  flex-direction: column-reverse;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-button.nav-bottom {
+  flex-direction: column;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-button.offset {
+  left: calc(50% + 200px);
+}
+
+.nav-arrow {
+  fill: currentcolor;
+}
+
+.nav-top > .nav-arrow {
+  transform: scaleY(-1);
+}

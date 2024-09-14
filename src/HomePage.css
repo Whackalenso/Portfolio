@@ -1,0 +1,8 @@
+.home {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #FFD25D;
+  color: var(--primary-color);
+  transition: top 0.5s ease-in-out;
+}

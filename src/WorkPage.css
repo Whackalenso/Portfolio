@@ -1,0 +1,51 @@
+.workPage {
+  font-family: "IBM Plex Mono";
+  font-weight: 500;
+  margin: 0;
+  height: 100%;
+}
+
+.title {
+  font-family: "Major Mono Display";
+  font-size: 3rem;
+  margin: 50px 0 0 50px;
+}
+
+.sidebar {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 0 50px;
+  width: 24vw;
+  box-sizing: border-box;
+  top: 25vh;
+  margin-top: 50px;
+}
+
+.divider {
+  position: absolute;
+  width: 1px;
+  height: 75vh;
+  bottom: 0;
+  left: 24vw;
+  background-color: black;
+}
+
+.body {
+  margin-left: calc(24vw + 100px);
+  position: absolute;
+  top: 25vh;
+}
+
+h2 {
+  font-size: 4rem;
+}
+
+subtitle {
+  font-style: italic;
+}
+
+.body-text {
+  margin-top: 100px;
+}
