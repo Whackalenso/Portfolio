@@ -2,7 +2,45 @@
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background-color: #FFD25D;
+  background-color: var(--bg-color);
   color: var(--primary-color);
-  transition: top 0.5s ease-in-out;
+  transition: top ease-in-out;
+  z-index: 10;
+}
+
+.center {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  justify-content: center;
+  gap: 50px;
+  width: 50vw;
+}
+
+.portrait {
+  height: 60vh;
+  /* background-color: var(--primary-color); */
+  border-radius: 10px;
+  /* box-shadow: -20px 20px var(--primary-color); */
+}
+
+h1 {
+  font-size: 6rem;
+  width: 50%;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 25px;
+  font-size: 1.5rem;
 }
