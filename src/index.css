@@ -11,7 +11,7 @@ html {
   --primary-color: #6000C1;
   --accent-color: #BB0000;
   --bg-color: #FFD25D;
-  font-family: "Major Mono Display";
+  font-family: "Geist";
   overflow: clip;
 }
 
@@ -88,10 +88,6 @@ h2 {
 
   z-index: 100;
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
   color: var(--primary-color);
   font-family: "Geist";
   font-size: 1.5rem;
@@ -100,20 +96,17 @@ h2 {
   cursor: pointer;
 
   transition: all 1s;
+
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .nav-button.nav-top {
-  flex-direction: column-reverse;
-  top: 25px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 50px;
 }
 
 .nav-button.nav-bottom {
-  flex-direction: column;
-  bottom: 25px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 50px;
 }
 
 .nav-button.offset {
@@ -122,8 +115,17 @@ h2 {
 
 .nav-arrow {
   fill: currentcolor;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  /* translate: 0 50px; */
 }
 
 .nav-top > .nav-arrow {
-  transform: scaleY(-1);
+  transform: scaleY(-1) translateY(35px);
+}
+
+.nav-bottom > .nav-arrow {
+  transform: translateY(35px);
 }

@@ -3,7 +3,7 @@ export default function LightSculptureProject() {
     <div className="project">
       <h2>Light Sculpture</h2>
       <subtitle>Coming soon</subtitle>
-      <p className="project-body">Coming soon</p>
+      <p className="project-body"></p>
     </div>
   );
 }
