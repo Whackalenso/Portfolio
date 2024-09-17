@@ -8,7 +8,7 @@ export default function NavButton({ text, value, side, callback }) {
         callback(value);
       }}
     >
-      <div>{text}</div>
+      <div className="nav-text">{text}</div>
       <ArrowDown className="nav-arrow" />
     </div>
   );

@@ -18,6 +18,7 @@
 
 .about-body-text {
     font-family: "Geist";
+    font-weight: 500;
     font-size: 1.2rem;
     width: 40vw;
     text-align: center;
@@ -35,7 +36,7 @@
 }
 
 .image > img {
-    height: 40vh;
+    height: 50vh;
     transition: all 0.5s;
 }
 

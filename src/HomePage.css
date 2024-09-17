@@ -45,3 +45,11 @@ h1 {
   gap: 25px;
   font-size: 1.5rem;
 }
+
+.footer {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-style: italic;
+  color: #1a1b1c;
+}

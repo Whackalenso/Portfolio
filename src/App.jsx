@@ -6,8 +6,10 @@ import NavButton from "./components/NavButton";
 import { useState, useRef } from "react";
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState("home");
-  const pageLayout = { about: "100vh", home: "0", work: "-100vh" };
+  // const [currentPage, setCurrentPage] = useState("home");
+  const currentPage = useRef("home");
+  const [homePosition, setHomePosition] = useState(0);
+  const pageLayout = { about: 100, home: 0, work: -100 };
   const navButtonLayout = {
     about: [
       <NavButton
@@ -69,9 +71,9 @@ export default function App() {
   // };
 
   function changePage(page) {
-    homeSpeed.current = currentPage == "home" ? "fast" : "slow";
+    homeSpeed.current = currentPage.current == "home" ? "fast" : "slow";
     homeContent.current =
-      currentPage == "home" || page == "home" ? true : false;
+      currentPage.current == "home" || page == "home" ? true : false;
     if (page != "home") {
       var interval = setInterval(() => {
         var top = getComputedStyle(homeRef.current).top;
@@ -82,8 +84,14 @@ export default function App() {
         }
       });
     }
-    setCurrentPage(page);
+    currentPage.current = page;
+    setHomePosition(pageLayout[page]);
   }
+
+  // function onScroll(e) {
+  //   setHomePosition(e.target.scrollTop);
+  //   console.log(e.target.scrollTop);
+  // }
 
   return (
     <div>
@@ -93,11 +101,11 @@ export default function App() {
       ,
       <HomePage
         innerRef={homeRef}
-        top={pageLayout[currentPage]}
+        top={`${homePosition}vh`}
         speed={homeSpeed.current}
         content={homeContent.current}
       />
-      {navButtonLayout[currentPage].map((button) => button)}
+      {navButtonLayout[currentPage.current].map((button) => button)}
     </div>
   );
 }

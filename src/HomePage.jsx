@@ -24,6 +24,7 @@ export default function HomePage({ innerRef, top, speed, content }) {
           </div>
         </div>
       </div>
+      <div className="footer" style={{ visibility: content ? "visible" : "hidden" }}>Last Updated: 9/16/24</div>
     </div>
   );
 }

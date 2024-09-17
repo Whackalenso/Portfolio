@@ -26,7 +26,7 @@ export default function AboutPage({ visible }) {
           Jazz performance in Barcelona{" "}
           <CornerRightDown className="corner-arrow" />
         </p>
-        <img src={"./jazz_2.JPG"} style={{ height: "40vh" }} />
+        <img src={"./jazz_2.JPG"} style={{ height: "50vh" }} />
       </div>
     </div>
   );
