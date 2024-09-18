@@ -3,13 +3,13 @@ import HomePage from "./HomePage";
 import WorkPage from "./WorkPage";
 import AboutPage from "./AboutPage";
 import NavButton from "./components/NavButton";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function App() {
   // const [currentPage, setCurrentPage] = useState("home");
   const currentPage = useRef("home");
-  const [homePosition, setHomePosition] = useState(0);
-  const pageLayout = { about: 100, home: 0, work: -100 };
+  // const [homePosition, setHomePosition] = useState(0);
+  // const pageLayout = { about: 100, home: 0, work: -100 };
   const navButtonLayout = {
     about: [
       <NavButton
@@ -88,24 +88,34 @@ export default function App() {
     setHomePosition(pageLayout[page]);
   }
 
-  // function onScroll(e) {
-  //   setHomePosition(e.target.scrollTop);
-  //   console.log(e.target.scrollTop);
-  // }
+  function onScroll(e) {
+    // setHomePosition(e.target.scrollTop);
+    var scrollPos = window.scrollY / window.innerHeight
+    console.log(scrollPos);
+    if (scrollPos < 1 && backgroundPage != "about") {
+      setBackgroundPage("about");
+    }
+    if (scrollPos > 1 && backgroundPage != "work") {
+      setBackgroundPage("work");
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <div>
+    <div className="app">
+      {/* <div className="spacer-page"></div> */}
       <AboutPage changePage={changePage} visible={backgroundPage == "about"} />
-      ,
       <WorkPage changePage={changePage} visible={backgroundPage == "work"} />
-      ,
       <HomePage
         innerRef={homeRef}
-        top={`${homePosition}vh`}
         speed={homeSpeed.current}
         content={homeContent.current}
       />
-      {navButtonLayout[currentPage.current].map((button) => button)}
+      <div className="spacer-page"></div>
+      {/* {navButtonLayout[currentPage.current].map((button) => button)} */}
     </div>
   );
 }

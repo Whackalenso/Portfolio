@@ -12,11 +12,16 @@ html {
   --accent-color: #BB0000;
   --bg-color: #FFD25D;
   font-family: "Geist";
-  overflow: clip;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
+  /* height: 100%; */
+}
+
+.app {
+  /* overflow-y: scroll; */
 }
 
 .page-title {
@@ -128,4 +133,11 @@ h2 {
 
 .nav-bottom > .nav-arrow {
   transform: translateY(35px);
+}
+
+.spacer-page {
+  height: 100vh;
+  width: 100vw;
+  background-color: transparent;
+  z-index: -1000;
 }

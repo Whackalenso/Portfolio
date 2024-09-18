@@ -1,11 +1,11 @@
 .home {
-  position: absolute;
   width: 100vw;
   height: 100vh;
   background-color: var(--bg-color);
   color: var(--primary-color);
   transition: top ease-in-out;
   z-index: 10;
+  position: relative;
 }
 
 .center {

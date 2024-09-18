@@ -1,10 +1,10 @@
 import "./HomePage.css";
 
-export default function HomePage({ innerRef, top, speed, content }) {
+export default function HomePage({ innerRef, speed, content }) {
   return (
     <div
       className="home"
-      style={{ top: top, transitionDuration: `${speed == "fast" ? 0.5 : 1}s` }}
+      style={{ transitionDuration: `${speed == "fast" ? 0.5 : 1}s` }}
       ref={innerRef}
     >
       <div

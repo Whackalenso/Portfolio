@@ -1,6 +1,14 @@
 .about-page {
     height: 100vh;
     width: 100vw;
+    position: sticky;
+    top: 0;
+}
+
+.about-page-inner {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
 }
 
 .about-content{
