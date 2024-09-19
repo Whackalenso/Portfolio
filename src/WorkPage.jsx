@@ -3,7 +3,7 @@ import CadProject from "./projects/CadProject";
 import LightSculptureProject from "./projects/LightScuptureProject";
 import { useState } from "react";
 
-export default function WorkPage({ visible }) {
+export default function WorkPage({ visible, full }) {
   const [currentProject, setCurrentProject] = useState(0);
   const projects = [
     { name: "CAD Skateboard", page: <CadProject /> },
@@ -11,7 +11,11 @@ export default function WorkPage({ visible }) {
   ];
 
   return (
-    <div className="work-page" style={{ display: visible ? "block" : "none" }}>
+    <div
+      className={"work-page" + (full ? " full" : "")}
+      style={{ display: visible ? "block" : "none" }}
+    >
+      {/* <div className="work-page-inner"> */}
       <h2 className="page-title">My Work</h2>
       <div className="gradient"></div>
       <div className="sidebar">
@@ -30,6 +34,7 @@ export default function WorkPage({ visible }) {
       </div>
       <div className="divider"></div>
       {projects[currentProject].page}
+      {/* </div> */}
     </div>
   );
 }

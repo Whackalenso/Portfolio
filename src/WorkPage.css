@@ -2,11 +2,17 @@
   font-family: "Geist";
   font-weight: 500;
   margin: 0;
-  height: 100%;
-  width: 100%;
-  position: absolute;
+  height: max-content;
+  width: 100vw;
+  position: fixed;
   top: 0;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+  overflow-x: hidden;
+  background-color: white;
+}
+
+.work-page.full {
+  position: absolute;
 }
 
 .gradient {
@@ -73,6 +79,12 @@
   margin-right: 14vw;
   margin-top: 24vh;
   z-index: -100;
+}
+
+.work-page.full > .project {
+  margin-top: 224vh;
+  /* margin-left: calc(24vw + 117px);
+  margin-right: calc(14vw - 17px); */
 }
 
 h2 {
