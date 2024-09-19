@@ -13,6 +13,7 @@ html {
   --bg-color: #FFD25D;
   font-family: "Geist";
   overflow-x: clip;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -92,7 +93,7 @@ h2 {
   cursor: none; */
 
   z-index: 100;
-  position: absolute;
+  position: fixed;
   color: var(--primary-color);
   font-family: "Geist";
   font-size: 1.5rem;

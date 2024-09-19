@@ -10,10 +10,11 @@ import { useState, useRef, useEffect } from "react";
 // export const history = createHistory();
 
 export default function App() {
-  // const [currentPage, setCurrentPage] = useState("home");
-  const currentPage = useRef("home");
+  const [currentPage, setCurrentPage] = useState("home");
+  // const currentPage = useRef("home");
   // const [homePosition, setHomePosition] = useState(0);
   // const pageLayout = { about: 100, home: 0, work: -100 };
+  const pageLayout = { about: 0, home: 1, work: 2 };
   const navButtonLayout = {
     about: [
       <NavButton
@@ -78,9 +79,9 @@ export default function App() {
   // };
 
   function changePage(page) {
-    // homeSpeed.current = currentPage.current == "home" ? "fast" : "slow";
+    homeSpeed.current = currentPage == "home" ? "fast" : "slow";
     // homeContent.current =
-    //   currentPage.current == "home" || page == "home" ? true : false;
+    //   currentPage == "home" || page == "home" ? true : false;
     // if (page != "home") {
     //   var interval = setInterval(() => {
     //     var top = getComputedStyle(homeRef.current).top;
@@ -92,7 +93,9 @@ export default function App() {
     //   });
     // }
     // currentPage.current = page;
+    setCurrentPage(page);
     // setHomePosition(pageLayout[page]);
+    window.scrollTo(0, pageLayout[page] * window.innerHeight);
   }
 
   function onScroll(e) {
@@ -112,7 +115,7 @@ export default function App() {
 
   useEffect(() => {
     window.history.scrollRestoration = "manual";
-    window.scrollTo(0, window.innerHeight);
+    window.scrollTo({ top: window.innerHeight, behavior: "instant" });
     window.addEventListener("scroll", onScroll);
     console.log("sdf");
   }, []);
@@ -124,7 +127,6 @@ export default function App() {
 
   return (
     <div className="app">
-      {/* <div className="spacer-page"></div> */}
       <AboutPage changePage={changePage} visible={backgroundPage == "about"} />
       <HomePage
         innerRef={homeRef}
@@ -137,7 +139,7 @@ export default function App() {
         full={workFull}
       />
       <div className="spacer-page"></div>
-      {/* {navButtonLayout[currentPage.current].map((button) => button)} */}
+      {navButtonLayout[currentPage].map((button) => button)}
     </div>
   );
 }
