@@ -100,23 +100,33 @@ h2 {
   font-style: medium;
 
   cursor: pointer;
-
-  transition: all 1s;
+  
+  height: 100px;
+  box-sizing: border-box;
 
   left: 50%;
   transform: translateX(-50%);
 }
 
+.nav-button.transition {
+  /* transition: all 1s linear; */
+}
+
 .nav-button.nav-top {
-  top: 50px;
+  top: 0px;
 }
 
 .nav-button.nav-bottom {
-  bottom: 50px;
+  top: calc(100vh - 100px);
 }
 
 .nav-button.offset {
-  left: calc(50% + 200px);
+  /* left: calc(50% + 200px); */
+}
+
+.nav-text {
+  margin-top: 50px;
+  transform: translateY(-50%);
 }
 
 .nav-arrow {
@@ -141,4 +151,12 @@ h2 {
   width: 100vw;
   background-color: transparent;
   z-index: -1000;
+}
+
+.scroll-container {
+  scroll-snap-type: y proximity;
+}
+
+.scroll-child {
+  scroll-snap-align: start;
 }

@@ -11,7 +11,7 @@ import { useState, useRef, useEffect } from "react";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
-  // const currentPage = useRef("home");
+  const currentPageRef = useRef("home");
   // const [homePosition, setHomePosition] = useState(0);
   // const pageLayout = { about: 100, home: 0, work: -100 };
   const pageLayout = { about: 0, home: 1, work: 2 };
@@ -68,7 +68,8 @@ export default function App() {
 
   const homeRef = useRef(null);
   const homeSpeed = useRef("fast");
-  const homeContent = useRef(true);
+  // const homeContent = useRef(true);
+  const [homeContent, setHomeContent] = useState(true);
   const [backgroundPage, setBackgroundPage] = useState();
   const bgPageRef = useRef();
   const [workFull, setWorkFull] = useState(false);
@@ -78,10 +79,12 @@ export default function App() {
   //   work: <WorkPage changePage={changePage} />,
   // };
 
+  const [localScroll, setLocalScroll] = useState(0);
+  const scrollPos = useRef(0);
+
   function changePage(page) {
     homeSpeed.current = currentPage == "home" ? "fast" : "slow";
-    // homeContent.current =
-    //   currentPage == "home" || page == "home" ? true : false;
+    setHomeContent(currentPage == "home" || page == "home" ? true : false);
     // if (page != "home") {
     //   var interval = setInterval(() => {
     //     var top = getComputedStyle(homeRef.current).top;
@@ -93,37 +96,65 @@ export default function App() {
     //   });
     // }
     // currentPage.current = page;
-    setCurrentPage(page);
+    // setCurrentPage(page);
     // setHomePosition(pageLayout[page]);
     window.scrollTo(0, pageLayout[page] * window.innerHeight);
   }
 
+  function _setCurrentPage(page) {
+    setCurrentPage(page);
+    currentPageRef.current = page;
+  }
+
   function onScroll(e) {
     // setHomePosition(e.target.scrollTop);
-    console.log(workFullRef.current);
-    var scrollPos = window.scrollY / window.innerHeight;
-    if (scrollPos <= 1.0 && bgPageRef.current != "about") {
+    scrollPos.current = window.scrollY / window.innerHeight;
+    // if ((Math.abs(scrollPos.current - Math.round(scrollPos.current)) <= 0.5) && (scrollPos.current != Math.round(scrollPos.current))) {
+    //   window.scrollTo(0, Math.round(scrollPos.current));
+    //   return;
+    // }
+    if (scrollPos.current <= 1.0 && bgPageRef.current != "about") {
       setBackgroundPage("about");
     }
-    if (scrollPos > 1.0 && bgPageRef.current != "work") {
+    if (scrollPos.current > 1.0 && bgPageRef.current != "work") {
       setBackgroundPage("work");
     }
-    if (scrollPos >= 2 != workFullRef.current) {
-      setWorkFull(scrollPos >= 2);
+    if (scrollPos.current >= 2 != workFullRef.current) {
+      setWorkFull(scrollPos.current >= 2);
     }
+
+    if (currentPageRef.current == "home") {
+      if (scrollPos.current == 0) {
+        _setCurrentPage("about");
+      }
+      if (scrollPos.current >= 2) {
+        _setCurrentPage("work");
+      }
+    }
+    if (scrollPos.current >= 1 && currentPageRef.current == "about") {
+      _setCurrentPage("home");
+    }
+    if (scrollPos.current <= 1 && currentPageRef.current == "work") {
+      _setCurrentPage("home");
+    }
+
+    setLocalScroll(scrollPos.current - pageLayout[currentPageRef.current]); // this will return a number between -1 and 1 depending on the scroll of a page
   }
 
   useEffect(() => {
     window.history.scrollRestoration = "manual";
     window.scrollTo({ top: window.innerHeight, behavior: "instant" });
     window.addEventListener("scroll", onScroll);
-    console.log("sdf");
+    window.addEventListener("scrollend", () => {
+      setHomeContent(true);
+    });
   }, []);
 
   useEffect(() => {
     bgPageRef.current = backgroundPage;
     workFullRef.current = workFull;
-  }, [backgroundPage, workFull]);
+    currentPageRef.current = currentPage;
+  }, [backgroundPage, workFull, currentPage]);
 
   return (
     <div className="app">
@@ -131,7 +162,7 @@ export default function App() {
       <HomePage
         innerRef={homeRef}
         speed={homeSpeed.current}
-        content={homeContent.current}
+        content={homeContent}
       />
       <WorkPage
         changePage={changePage}
@@ -139,7 +170,19 @@ export default function App() {
         full={workFull}
       />
       <div className="spacer-page"></div>
-      {navButtonLayout[currentPage].map((button) => button)}
+      {/* {navButtonLayout[currentPage].map((button) => button)} */}
+      <NavButton
+        currentPage={currentPage}
+        localScroll={localScroll}
+        callback={changePage}
+        id={0}
+      />,
+      <NavButton
+        currentPage={currentPage}
+        localScroll={localScroll}
+        callback={changePage}
+        id={1}
+      />
     </div>
   );
 }

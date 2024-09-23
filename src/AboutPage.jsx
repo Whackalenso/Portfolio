@@ -5,7 +5,7 @@ import CornerRightDown from "./icons/corner-right-down.svg?react";
 export default function AboutPage({ visible }) {
   return (
     <div
-      className="about-page"
+      className="about-page scroll-child"
       style={{ visibility: visible ? "visible" : "hidden" }}
     >
       <div className="about-page-inner">

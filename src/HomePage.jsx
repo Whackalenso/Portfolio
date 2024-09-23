@@ -3,7 +3,7 @@ import "./HomePage.css";
 export default function HomePage({ innerRef, speed, content }) {
   return (
     <div
-      className="home"
+      className="home scroll-child"
       style={{ transitionDuration: `${speed == "fast" ? 0.5 : 1}s` }}
       ref={innerRef}
     >
