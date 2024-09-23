@@ -78,7 +78,7 @@ export default function CadProject() {
 
         <p style={{ marginTop: "80px" }}>
           Overall, this was a fun project. It was interesting to use different
-          CAD software than I'm used to and also learn some new things.
+          CAD software than I'm used to and also learn some new things. In addition, I was able to help many others who were struggling with their skateboard.
         </p>
       </div>
     </div>
