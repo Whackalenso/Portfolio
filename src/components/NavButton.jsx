@@ -12,12 +12,11 @@ export default function NavButton({ currentPage, localScroll, callback, id }) {
   var page = pageLayouts[currentPage][id].page;
   var otherSide = pageLayouts[currentPage][id == 0 ? 1 : 0].side;
 
-  const [transition, setTransition] = useState(false);
-
+  const height = "125px";
   var style = {};
   if (localScroll == 0 || (currentPage == "work" && localScroll >= 0)) {
     style = {
-      top: side.includes("top") ? "0vh" : "calc(100vh - 100px)"
+      top: side.includes("top") ? "0vh" : `calc(100vh - ${height})`
     };
     if (side.includes("offset")) {
       style.left = "calc(50% + 200px)"
@@ -25,21 +24,21 @@ export default function NavButton({ currentPage, localScroll, callback, id }) {
   } else {
     if (localScroll < 0) {
       if (side == "top") {
-        style = { top: `min(${-localScroll * 100}vh, calc(100vh - 100px))` }
+        style = { top: `min(${-localScroll * 100}vh, calc(100vh - ${height}))` }
       }
       if (side == "top offset") {
         style = { top: "0vh", left: `calc(50% + ${(1 + localScroll) * 200}px)` };
       }
       if ((side == "bottom" && otherSide == "top") || (side == "bottom offset")) {
-        style = { top: `calc(100vh - 100px)`, left: `calc(50% + ${-localScroll * 200}px)` };
+        style = { top: `calc(100vh - ${height})`, left: `calc(50% + ${-localScroll * 200}px)` };
       }
     }
     if (localScroll > 0) {
       if (side == "bottom") {
-        style = { top: `max(calc(${(1 - localScroll) * 100}vh - 100px), 0px)` }
+        style = { top: `max(calc(${(1 - localScroll) * 100}vh - ${height}), 0px)` }
       }
       if (side == "bottom offset") {
-        style = { top: `calc(100vh - 100px)`, left: `calc(50% + ${(1 - localScroll) * 200}px)` };
+        style = { top: `calc(100vh - ${height})`, left: `calc(50% + ${(1 - localScroll) * 200}px)` };
       }
       if ((side == "top" && otherSide == "bottom") || (side == "top offset")) {
         style = { top: "0vh", left: `calc(50% + ${localScroll * 200}px)` };
@@ -48,10 +47,9 @@ export default function NavButton({ currentPage, localScroll, callback, id }) {
   }
   return (
     <div
-      className={`nav-button nav-${side} ${transition ? "transition" : ""}`}
+      className={`nav-button nav-${side}`}
       style={style}
       onClick={() => {
-        setTransition(true);
         callback(page);
       }}
     >
