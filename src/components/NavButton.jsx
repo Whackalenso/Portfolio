@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ArrowDown from "../icons/arrow_down.svg?react";
 
 export default function NavButton({ currentPage, localScroll, callback, id }) {
@@ -11,6 +11,12 @@ export default function NavButton({ currentPage, localScroll, callback, id }) {
   var side = pageLayouts[currentPage][id].side;
   var page = pageLayouts[currentPage][id].page;
   var otherSide = pageLayouts[currentPage][id == 0 ? 1 : 0].side;
+
+  const [text, setText] = useState(pageTexts[page]);
+
+  useEffect(() => {
+    setText(pageTexts[page]);
+  }, [currentPage]);
 
   const height = "125px";
   var style = {};

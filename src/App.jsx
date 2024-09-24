@@ -107,8 +107,7 @@ export default function App() {
   }
 
   function onScroll(e) {
-    // setHomePosition(e.target.scrollTop);
-    scrollPos.current = window.scrollY / window.innerHeight;
+    scrollPos.current = Math.floor(window.scrollY / window.innerHeight * 1000) / 1000; // this returns .999 on inital scroll to home
     // if ((Math.abs(scrollPos.current - Math.round(scrollPos.current)) <= 0.5) && (scrollPos.current != Math.round(scrollPos.current))) {
     //   window.scrollTo(0, Math.round(scrollPos.current));
     //   return;
