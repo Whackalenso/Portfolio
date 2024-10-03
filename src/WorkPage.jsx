@@ -3,7 +3,7 @@ import CadProject from "./projects/CadProject";
 import LightSculptureProject from "./projects/LightScuptureProject";
 import { useState } from "react";
 
-export default function WorkPage({ visible, full }) {
+export default function WorkPage({ changePage, visible, full }) {
   const [currentProject, setCurrentProject] = useState(0);
   const projects = [
     { name: "CAD Skateboard", page: <CadProject /> },
@@ -14,6 +14,11 @@ export default function WorkPage({ visible, full }) {
     <div
       className={"work-page" + (full ? " full" : "")}
       style={{ display: visible ? "block" : "none" }}
+      onClick={() => {
+        if (window.scrollY / window.innerHeight < 2) {
+          changePage("work");
+        }
+      }}
     >
       {/* <div className="work-page-inner"> */}
       <h2 className="page-title">My Work</h2>

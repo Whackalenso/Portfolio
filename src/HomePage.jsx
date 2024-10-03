@@ -1,11 +1,14 @@
 import "./HomePage.css";
 
-export default function HomePage({ innerRef, speed, content }) {
+export default function HomePage({ changePage, innerRef, speed, content }) {
   return (
     <div
       className="home scroll-child"
       style={{ transitionDuration: `${speed == "fast" ? 0.5 : 1}s` }}
       ref={innerRef}
+      onClick={() => {
+        changePage("home");
+      }}
     >
       <div
         className="center"
@@ -24,7 +27,12 @@ export default function HomePage({ innerRef, speed, content }) {
           </div>
         </div>
       </div>
-      <div className="footer" style={{ visibility: content ? "visible" : "hidden" }}>Last Updated: 9/16/24</div>
+      <div
+        className="footer"
+        style={{ visibility: content ? "visible" : "hidden" }}
+      >
+        Last Updated: 9/16/24
+      </div>
     </div>
   );
 }

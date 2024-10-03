@@ -2,11 +2,14 @@ import "./AboutPage.css";
 import CornerRightUp from "./icons/corner-right-up.svg?react";
 import CornerRightDown from "./icons/corner-right-down.svg?react";
 
-export default function AboutPage({ visible }) {
+export default function AboutPage({ changePage, visible }) {
   return (
     <div
-      className="about-page scroll-child"
+      className="about-page"
       style={{ visibility: visible ? "visible" : "hidden" }}
+      onClick={() => {
+        changePage("about");
+      }}
     >
       <div className="about-page-inner">
         <div className="about-content">
