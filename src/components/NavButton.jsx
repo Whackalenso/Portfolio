@@ -14,9 +14,17 @@ export default function NavButton({ currentPage, localScroll, callback, id }) {
 
   const [text, setText] = useState(pageTexts[page]);
 
-  useEffect(() => {
-    setText(pageTexts[page]);
-  }, [currentPage]);
+  // useEffect(() => {
+  //   var newPage = pageTexts[page]
+  //   for (var i = 0; i < Math.max(text.length, newPage.length); i++) {
+  //     var newText = text;
+  //     if (i >= text.length) {
+  //       nextText += newPage[i];
+  //     }
+  //     nextText[i] = newPage[i];
+  //   }
+  //   setText(pageTexts[page]);
+  // }, [currentPage]);
 
   const height = "125px";
   var style = {};
