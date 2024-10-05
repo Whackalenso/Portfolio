@@ -1,12 +1,27 @@
 import { useEffect, useState } from "react";
 import ArrowDown from "../icons/arrow_down.svg?react";
 
-export default function NavButton({ currentPage, localScroll, callback, id }) {
+export default function NavButton({
+  currentPage,
+  localScroll,
+  callback,
+  id,
+  focus,
+}) {
   var pageTexts = { about: "about me", home: "home", work: "my work" };
   var pageLayouts = {
-    about: [{ side: "bottom", page: "home" }, { side: "bottom offset", page: "work" }],
-    home: [{ side: "top", page: "about" }, { side: "bottom", page: "work" }],
-    work: [{ side: "top offset", page: "about" }, { side: "top", page: "home" }]
+    about: [
+      { side: "bottom", page: "home" },
+      { side: "bottom offset", page: "work" },
+    ],
+    home: [
+      { side: "top", page: "about" },
+      { side: "bottom", page: "work" },
+    ],
+    work: [
+      { side: "top offset", page: "about" },
+      { side: "top", page: "home" },
+    ],
   };
   var side = pageLayouts[currentPage][id].side;
   var page = pageLayouts[currentPage][id].page;
@@ -30,38 +45,51 @@ export default function NavButton({ currentPage, localScroll, callback, id }) {
   var style = {};
   if (localScroll == 0 || (currentPage == "work" && localScroll >= 0)) {
     style = {
-      top: side.includes("top") ? "0vh" : `calc(100vh - ${height})`
+      top: side.includes("top") ? "0vh" : `calc(100vh - ${height})`,
     };
     if (side.includes("offset")) {
-      style.left = "calc(50% + 200px)"
+      style.left = "calc(50% + 200px)";
     }
   } else {
     if (localScroll < 0) {
       if (side == "top") {
-        style = { top: `min(${-localScroll * 100}vh, calc(100vh - ${height}))` }
+        style = {
+          top: `min(${-localScroll * 100}vh, calc(100vh - ${height}))`,
+        };
       }
       if (side == "top offset") {
-        style = { top: "0vh", left: `calc(50% + ${(1 + localScroll) * 200}px)` };
+        style = {
+          top: "0vh",
+          left: `calc(50% + ${(1 + localScroll) * 200}px)`,
+        };
       }
-      if ((side == "bottom" && otherSide == "top") || (side == "bottom offset")) {
-        style = { top: `calc(100vh - ${height})`, left: `calc(50% + ${-localScroll * 200}px)` };
+      if ((side == "bottom" && otherSide == "top") || side == "bottom offset") {
+        style = {
+          top: `calc(100vh - ${height})`,
+          left: `calc(50% + ${-localScroll * 200}px)`,
+        };
       }
     }
     if (localScroll > 0) {
       if (side == "bottom") {
-        style = { top: `max(calc(${(1 - localScroll) * 100}vh - ${height}), 0px)` }
+        style = {
+          top: `max(calc(${(1 - localScroll) * 100}vh - ${height}), 0px)`,
+        };
       }
       if (side == "bottom offset") {
-        style = { top: `calc(100vh - ${height})`, left: `calc(50% + ${(1 - localScroll) * 200}px)` };
+        style = {
+          top: `calc(100vh - ${height})`,
+          left: `calc(50% + ${(1 - localScroll) * 200}px)`,
+        };
       }
-      if ((side == "top" && otherSide == "bottom") || (side == "top offset")) {
+      if ((side == "top" && otherSide == "bottom") || side == "top offset") {
         style = { top: "0vh", left: `calc(50% + ${localScroll * 200}px)` };
       }
     }
   }
   return (
     <div
-      className={`nav-button nav-${side}`}
+      className={`nav-button nav-${side} ${focus ? "focus" : ""}`}
       style={style}
       onClick={() => {
         callback(page);

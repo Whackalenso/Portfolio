@@ -95,14 +95,14 @@ h3 {
   margin-top: 80px;
 }
 
+.subtitle {
+  font-style: italic;
+}
+
 .columns {
   display: flex;
   gap: 20px;
   overflow: flex
-}
-
-subtitle {
-  font-style: italic;
 }
 
 .project-body {

@@ -8,7 +8,7 @@ export default function WorkPage({ changePage, visible, full }) {
   const [currentProject, setCurrentProject] = useState(0);
   const projects = [
     { name: "CAD Skateboard", page: <CadProject /> },
-    { name: "Electric Circuits", page: <CircuitsProject/>},
+    { name: "Electric Circuits", page: <CircuitsProject /> },
     { name: "Light Sculpture", page: <LightSculptureProject /> },
   ];
 
@@ -33,7 +33,9 @@ export default function WorkPage({ changePage, visible, full }) {
             }
             onClick={() => {
               setCurrentProject(i);
+              window.scrollTo(0, 2 * window.innerHeight);
             }}
+            key={i}
           >
             {p.name}
           </div>

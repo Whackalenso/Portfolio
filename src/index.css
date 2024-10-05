@@ -109,6 +109,18 @@ h2 {
   transform: translateX(-50%);
 }
 
+.nav-button.nav-top.focus > .nav-text, .nav-button.nav-top:hover > .nav-text {
+  margin-top: calc(0.6 * var(--nav-height));
+}
+
+.nav-button.nav-bottom.focus > .nav-text, .nav-button.nav-bottom:hover > .nav-text {
+  margin-top: calc(0.4 * var(--nav-height));
+}
+
+/* .nav-button.focus > .nav-arrow, .nav-button:hover > .nav-arrow {
+  scale: 1.5 1;
+} */
+
 .nav-button.nav-top {
   top: 0px;
 }
@@ -124,6 +136,7 @@ h2 {
 .nav-text {
   margin-top: calc(0.5 * var(--nav-height));
   transform: translateY(-50%);
+  transition: all 0.3s;
 }
 
 .nav-arrow {
