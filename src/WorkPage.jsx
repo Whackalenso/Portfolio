@@ -1,6 +1,7 @@
 import "./WorkPage.css";
 import CadProject from "./projects/CadProject";
 import CircuitsProject from "./projects/CircuitsProject";
+import ProgrammingProject from "./projects/ProgrammingProject";
 import LightSculptureProject from "./projects/LightScuptureProject";
 import { useState } from "react";
 
@@ -9,6 +10,7 @@ export default function WorkPage({ changePage, visible, full }) {
   const projects = [
     { name: "CAD Skateboard", page: <CadProject /> },
     { name: "Electric Circuits", page: <CircuitsProject /> },
+    { name: "Arduino Programming", page: <ProgrammingProject />},
     { name: "Light Sculpture", page: <LightSculptureProject /> },
   ];
 
