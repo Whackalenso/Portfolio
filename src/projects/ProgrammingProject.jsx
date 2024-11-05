@@ -41,7 +41,7 @@ export default function ProgrammingProject() {
                 </div>
             </div>
             <h3>Reflection</h3>
-            <p>Having already had a lot of experience with programming and Arduino, I was already familiar with the programming concepts required for these exercises. The main challenge was figuring out what each question was asking for.</p>
+            <p>Having already had a lot of experience with programming and Arduino, I was already familiar with the programming concepts required for these exercises. The main challenge for me was figuring out what each question was asking for. This made the exercises very repetative and not very fun to do. In addition, I was able to get some others unstuck.</p>
         </div>
     </div>
 }
