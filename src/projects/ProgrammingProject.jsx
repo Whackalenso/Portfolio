@@ -1,7 +1,7 @@
 export default function ProgrammingProject() {
     return <div className="project">
         <h2>Arduino Programming</h2>
-        <p className="subtitle">Updated: 10/29/24</p>
+        <p className="subtitle">Updated: 11/6/24</p>
         <div className="project-body">
             <h3>Programming Concepts</h3>
             <p><b style={{fontSize: "14pt"}}>Variables</b> store data. Variables are declared in the form <code>&lt;type&gt; &lt;name&gt; = &lt;value&gt;;</code> (e.g. <code>int pin = 2;</code>). The basic data types used in these Arduino exercises are integers, or whole numbers, and booleans, which are either <code>true</code> or <code>false</code>. In code, these are represented by <code>int</code> and <code>boolean</code>, respectively. You can reference the value of a variable by just writing the name of the variable. To set a variable to a new value, you can use <code>&lt;variableName&gt; = &lt;newValue&gt;;</code> (e.g. <code>pin = 3;</code>).</p>
@@ -41,7 +41,7 @@ export default function ProgrammingProject() {
                 </div>
             </div>
             <h3>Reflection</h3>
-            <p>Having already had a lot of experience with programming and Arduino, I was already familiar with the programming concepts required for these exercises. The main challenge for me was figuring out what each question was asking for. This made the exercises very repetative and not very fun to do. In addition, I was able to get some others unstuck.</p>
+            <p>Having already had a lot of experience with programming and Arduino, these exercises were usually not very challenging for me, and doing them often felt repetitive. However, sometimes I did have trouble figuring out what each question was asking for. In addition to doing my own exercises, I was also able to help others get unstuck.</p>
         </div>
     </div>
 }
