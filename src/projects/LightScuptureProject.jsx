@@ -2,7 +2,7 @@ export default function LightSculptureProject() {
   return (
     <div className="project">
       <h2>Light Sculpture</h2>
-      <p className="subtitle">Updated: 1/15/2025</p>
+      <p className="subtitle">Updated: 1/18/2025</p>
       <div className="project-body">
         <h3>
           My project: <i>Slot Machine Candy Dispenser</i>

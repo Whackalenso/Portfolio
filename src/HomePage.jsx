@@ -31,7 +31,7 @@ export default function HomePage({ changePage, innerRef, speed, content }) {
         className="footer"
         style={{ visibility: content ? "visible" : "hidden" }}
       >
-        Last Updated: 11/14/24
+        Last Updated: 1/18/25
       </div>
     </div>
   );
